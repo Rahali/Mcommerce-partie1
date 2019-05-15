@@ -101,6 +101,17 @@ public class ProductController {
         return productDao.chercherUnProduitCher(400);
     }
 
+    @GetMapping(value = "/AdminProduits")
+    //qui calcule la marge de chaque produit (différence entre prix d‘achat et prix de vente).
+    public MappingJacksonValue calculerMargeProduit() {
+        Map<String, String> map = new HashMap<>();
+        Iterable<Product> produits = productDao.findAll();
+        for (Product produit : produits) {
+            map.put(produit.toString(),
+                    String.valueOf(produit.getPrix() - produit.getPrixAchat()));
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(map);
 
         return mappingJacksonValue;
     }
