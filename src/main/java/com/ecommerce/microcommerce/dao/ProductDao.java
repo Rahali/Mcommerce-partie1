@@ -1,12 +1,10 @@
 package com.ecommerce.microcommerce.dao;
 
-import com.ecommerce.microcommerce.model.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import com.ecommerce.microcommerce.model.*;
+import java.util.*;
+import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.*;
+import org.springframework.stereotype.*;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
@@ -18,5 +16,10 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
     List<Product> findByNomLike(String recherche);
 
     @Query("SELECT id, nom, prix FROM Product p WHERE p.prix > :prixLimit")
-    List<Product>  chercherUnProduitCher(@Param("prixLimit") int prix);
+    List<Product> chercherUnProduitCher(@Param("prixLimit") int prixLimit);
+
+    @Query("SELECT p,  p.prix-p.prixAchat as marge FROM Product p ")
+    int calculerMargeProduit();
+
+    List<Product> findAllByOrderByNomAsc();
 }
