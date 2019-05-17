@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestsPostman",
+		"_postman_id": "886cbfb5-16c6-2044-457b-59db9f3d31e6",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:9090/Produits",
+			"request": {
+				"url": "localhost:9090/Produits",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/Produits/1",
+			"request": {
+				"url": "localhost:9090/Produits/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Selectionné un seul produits"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/Produits/",
+			"request": {
+				"url": "localhost:9090/Produits/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4,\n    \"nom\": \"Jeux\",\n    \"prix\": 30,\n    \"prixAchat\": 80\n}"
+				},
+				"description": "Post une requete"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/AdminProduits",
+			"request": {
+				"url": "localhost:9090/AdminProduits",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4,\n    \"nom\": \"Jeux\",\n    \"prix\": 30,\n    \"prixAchat\": 80\n}"
+				},
+				"description": "marge des prix"
+			},
+			"response": []
+		}
+	]
+}
